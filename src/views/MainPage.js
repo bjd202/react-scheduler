@@ -31,7 +31,7 @@ function MainPage() {
                 <div className="squares square7" />
                 <Container>
                     <FullCalendar
-                        plugins={[ dayGridPlugin, interactionPlugin  ]}
+                        plugins={[ dayGridPlugin, interactionPlugin ]}
                         initialView="dayGridMonth"
                         dateClick={handleDateClick}
                         eventClick={eventClick}
