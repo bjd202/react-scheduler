@@ -39,6 +39,7 @@ function MainPage() {
                             { title: 'event 1', date: '2020-07-21' },
                             { title: 'event 2', date: '2020-07-22' }
                         ]}
+                        
                     />
                 </Container>
                 
