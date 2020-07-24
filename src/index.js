@@ -28,11 +28,12 @@ import LandingPage from "views/examples/LandingPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import LoginPage from "views/LoginPage";
+import MainPage from "views/MainPage";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/components" render={props => <Index {...props} />} />
+      {/* <Route path="/components" render={props => <Index {...props} />} />
       <Route
         path="/landing-page"
         render={props => <LandingPage {...props} />}
@@ -44,12 +45,18 @@ ReactDOM.render(
       <Route
         path="/profile-page"
         render={props => <ProfilePage {...props} />}
+      /> */}
+      <Route 
+        exact
+        path="/"
+        component={MainPage}
       />
       <Route 
+        exact
         path="/login" 
         component={LoginPage}
       />
-      <Redirect from="/" to="/components" />
+      {/* <Redirect from="/" to="/components" /> */}
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
