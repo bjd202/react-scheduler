@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
-  "name": "blk-design-system-react",
-  "version": "1.1.0",
-  "description": "React version of BLK Design System by Creative Tim",
-=======
   "name": "react-scheduler",
   "version": "1.1.0",
   "description": "react-scheduler",
->>>>>>> 665fa5e0d81801f92ab205ffd01dee7f6c1061ec
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -38,12 +32,9 @@
   },
   "homepage": "https://demos.creative-tim.com/blk-design-system-react/#/",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@fullcalendar/daygrid": "^5.1.0",
     "@fullcalendar/interaction": "^5.1.0",
     "@fullcalendar/react": "^5.1.0",
->>>>>>> 665fa5e0d81801f92ab205ffd01dee7f6c1061ec
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
     "gulp": "4.0.2",
