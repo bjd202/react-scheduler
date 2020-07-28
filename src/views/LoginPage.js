@@ -14,7 +14,7 @@ import {
 function LoginPage() {
 
     useEffect(() => {
-        document.body.classList.toggle("index-page");
+        //document.body.classList.toggle("index-page");
     }, [])
 
     return (
