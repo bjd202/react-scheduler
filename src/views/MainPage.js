@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -19,6 +19,7 @@ function MainPage() {
     const [endDate, setendDate] = useState("")
     const [Events, setEvents] = useState([])
     const [selectDate, setSelectDate] = useState(new Date())
+    const calendarRef = useRef(null)
 
     const history = useHistory();
 
@@ -67,9 +68,12 @@ function MainPage() {
         history.push("/login");
     }
 
-    const onChangeSelectDate = () => {
-        
-        setSelectDate()
+    
+
+    const onChangeSelectDate = (e) => {
+        const curruntApi = calendarRef.current.getApi();
+        curruntApi.gotoDate(e._d)
+        setSelectDate(e._d)
     }
 
     return (
@@ -101,8 +105,8 @@ function MainPage() {
                                 </NavLink>
                             </NavItem> */}
                             <NavItem>
-                                <form class="form-inline ml-auto">
-                                    <div class="form-group no-border">
+                                <form className="form-inline ml-auto">
+                                    <div className="form-group no-border">
                                         <Datetime 
                                             className="select_dt"
                                             value={selectDate}
@@ -147,7 +151,7 @@ function MainPage() {
                                         { title: 'event 2', date: '2020-07-22' },
                                         ...Events
                                     ]}
-                                    view
+                                    ref={calendarRef}
                                 />
 
                                 <Modal isOpen={toggleModalDemo} toggle={toggle}>
