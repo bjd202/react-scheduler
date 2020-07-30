@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import {withRouter} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import {withRouter, useHistory} from 'react-router-dom'
 import { Container } from "reactstrap";
 import {
     FormGroup,
@@ -10,12 +10,43 @@ import {
     Card,
     CardBody
   } from "reactstrap";
+import Axios from 'axios';
 
 function LoginPage() {
+
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+
+    const history = useHistory();
 
     useEffect(() => {
         //document.body.classList.toggle("index-page");
     }, [])
+
+    const onChangeId = (e) => {
+        setId(e.target.value)
+    }
+
+    const onChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleLogin = () => {
+        Axios.post('http://localhost:5000/api/user/login', {id : id, password : password})
+        .then((res) => {
+            if(res.data.success){
+                window.sessionStorage.setItem('id', res.data.data.id)
+                window.sessionStorage.setItem('name', res.data.data.name)
+                history.push('/');
+            }else{
+                alert('login error')
+            }
+            
+        })
+        .catch((err) => {
+            alert(err)
+        })
+    }
 
     return (
         <div className="wrapper">
@@ -39,6 +70,7 @@ function LoginPage() {
                                 name="id"
                                 id="id"
                                 placeholder="Enter ID"
+                                onChange={onChangeId}
                                 />
                             </FormGroup>
                             <FormGroup>
@@ -49,9 +81,10 @@ function LoginPage() {
                                 id="password"
                                 placeholder="Password"
                                 autoComplete="off"
+                                onChange={onChangePassword}
                                 />
                             </FormGroup>
-                            <Button color="primary" type="submit">
+                            <Button color="primary" onClick={handleLogin}>
                                 로그인
                             </Button>
                             </form>

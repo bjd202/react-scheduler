@@ -35,12 +35,15 @@
     "@fullcalendar/daygrid": "^5.1.0",
     "@fullcalendar/interaction": "^5.1.0",
     "@fullcalendar/react": "^5.1.0",
+    "axios": "^0.19.2",
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
+    "concurrently": "^5.2.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "moment": "2.24.0",
     "node-sass": "4.13.1",
+    "nodemon": "^2.0.4",
     "nouislider": "14.2.0",
     "perfect-scrollbar": "1.5.0",
     "react": "16.13.1",
@@ -60,7 +63,8 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "compile-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css",
     "minify-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.min.css --output-style compressed",
-    "map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true"
+    "map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true",
+    "dev": "concurrently \"npm run start\" \"nodemon ./server/app.js\""
   },
   "eslintConfig": {
     "extends": "react-app"

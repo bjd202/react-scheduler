@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import Datetime from 'react-datetime';
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 function MainPage() {
 
@@ -19,12 +20,26 @@ function MainPage() {
     const [endDate, setendDate] = useState("")
     const [Events, setEvents] = useState([])
     const [selectDate, setSelectDate] = useState(new Date())
+    const [user, setUser] = useState({
+        id : null,
+        name : null
+    })
+
+
     const calendarRef = useRef(null)
 
     const history = useHistory();
 
     useEffect(() => {
         //document.body.classList.toggle("index-page");
+        if(window.sessionStorage.getItem('id') === null){
+            history.push('/login');
+        }else{
+            setUser({
+                id : window.sessionStorage.getItem('id'),
+                name : window.sessionStorage.getItem('name')
+            })
+        }
     }, [])
 
     const toggle = (arg) => {
@@ -65,7 +80,21 @@ function MainPage() {
 
     const logoutNavLink = (e) => {
         e.preventDefault();
-        history.push("/login");
+        axios.post('http://localhost:5000/api/user/logout')
+        .then((res) => {
+            if(res.data.success){
+                window.sessionStorage.clear()
+                console.log(window.sessionStorage.getItem('id'))
+                setUser({
+                    id : null,
+                    name : null
+                })
+                history.push("/login");
+            }else{
+                alert('logout error')
+            }
+
+        })
     }
 
     
@@ -82,7 +111,7 @@ function MainPage() {
                 <Container>
                     <div className="navbar-translate">
                         <NavbarBrand href="" onClick={e => e.preventDefault()}>
-                            admin(이름)
+                            {user.id}({user.name})
                         </NavbarBrand>
                        
                         <button className="navbar-toggler" aria-expanded={false}>
