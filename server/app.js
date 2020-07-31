@@ -22,10 +22,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 const user_router = require('./routers/user');
+const event_router = require('./routers/event');
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.use('/api/user', user_router);
+app.use('/api/event', event_router);
 
 mongoose.connect('mongodb://localhost:27017/react-scheduler', {
     useNewUrlParser: true,
