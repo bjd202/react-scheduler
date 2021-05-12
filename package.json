@@ -36,7 +36,7 @@
     "@fullcalendar/interaction": "^5.1.0",
     "@fullcalendar/react": "^5.1.0",
     "axios": "^0.19.2",
-    "chart.js": "2.9.3",
+    "chart.js": "2.9.4",
     "classnames": "2.2.6",
     "concurrently": "^5.2.0",
     "gulp": "4.0.2",
